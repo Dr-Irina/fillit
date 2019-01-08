@@ -6,7 +6,7 @@
 /*   By: hrice <hrice@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 16:13:20 by hrice             #+#    #+#             */
-/*   Updated: 2018/12/27 16:13:20 by hrice            ###   ########.fr       */
+/*   Updated: 2019/01/08 15:31:52 by hrice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,30 @@ char	*read_file(int fd)
 	ft_memdel((void**)&buffer);
 	tetris = ft_strjoin(tetris, "\0");
 	return (tetris);
+}
+
+t_list          *tetri_list(char *tetris)
+{
+    int         i;
+    char        c;
+    t_list      *tetri_list;
+    t_tetris    *tetri;
+
+    tetri_list = NULL;
+    tetri = NULL;
+    c = 'A';
+    i = 0;
+    while (tetris[i])
+    {
+        tetri = get_block(tetris[i], c);
+        ft_lstadd(tetri_list, ft_lstnew(tetri, sizeof(t_tetris)));
+        i += 19;
+        if (tetris[i + 1] = '\n')
+            i += 2;
+        else
+            break;
+        c++;
+    }
+    ft_lstrev(tetri_list);
+    return(tetri_list);
 }

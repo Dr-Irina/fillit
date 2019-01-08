@@ -148,3 +148,4 @@ int		sharp_connection(char *str)
 	ft_putnbr(count);
 	return (count == 6 || count == 8);
 }
+
