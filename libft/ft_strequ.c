@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrice <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: wned <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 16:46:17 by hrice             #+#    #+#             */
-/*   Updated: 2018/11/27 17:34:55 by hrice            ###   ########.fr       */
+/*   Created: 2018/11/27 17:35:11 by wned              #+#    #+#             */
+/*   Updated: 2018/12/01 13:54:40 by wned             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,8 @@ int	ft_strequ(char const *s1, char const *s2)
 {
 	if (!s1 || !s2)
 		return (0);
-	if (ft_strlen(s1) != ft_strlen(s2))
+	if (ft_strcmp(s1, s2) == 0)
+		return (1);
+	else
 		return (0);
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return (1);
 }

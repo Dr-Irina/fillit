@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_lst_rev.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wned <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: hrice <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 13:44:43 by wned              #+#    #+#             */
-/*   Updated: 2018/11/27 13:51:50 by wned             ###   ########.fr       */
+/*   Created: 2019/01/31 15:29:46 by hrice             #+#    #+#             */
+/*   Updated: 2019/01/31 17:52:31 by hrice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+void		ft_lst_rev(t_list **alst)
 {
-	if (!s)
-		return ;
-	while (*s)
+	t_list	*prev;
+	t_list	*cur;
+	t_list	*next;
+
+	prev = NULL;
+	cur = *alst;
+	while (cur != NULL)
 	{
-		*s = '\0';
-		s++;
+		next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
 	}
+	*alst = prev;
 }

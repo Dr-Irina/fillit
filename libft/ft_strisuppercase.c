@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_strisuppercase.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wned <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 13:44:43 by wned              #+#    #+#             */
-/*   Updated: 2018/11/27 13:51:50 by wned             ###   ########.fr       */
+/*   Created: 2018/12/01 16:10:57 by wned              #+#    #+#             */
+/*   Updated: 2018/12/01 16:13:36 by wned             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+int	ft_strisuppercase(char *str)
 {
-	if (!s)
-		return ;
-	while (*s)
+	if (*str == '\0')
+		return (1);
+	while (*str != '\0')
 	{
-		*s = '\0';
-		s++;
+		if (*str >= 'A' && *str <= 'Z')
+			str++;
+		else
+			return (0);
 	}
+	return (1);
 }

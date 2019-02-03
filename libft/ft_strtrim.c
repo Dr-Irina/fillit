@@ -3,40 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrice <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: wned <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 21:15:47 by hrice             #+#    #+#             */
-/*   Updated: 2018/11/30 20:08:40 by hrice            ###   ########.fr       */
+/*   Created: 2018/11/28 15:57:35 by wned              #+#    #+#             */
+/*   Updated: 2018/11/29 17:05:30 by wned             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
+	char	*new;
 	int		i;
-	int		k;
-	char	*fresh;
-	char	*nl;
+	int		j;
 
 	if (!s)
 		return (NULL);
-	k = ft_strlen(s);
+	j = ft_strlen(s) - 1;
 	i = 0;
-	while (s[k - 1] == '\n' || s[k - 1] == '\t' || s[k - 1] == ' ')
-		k--;
-	while ((s[i] == '\n' || s[i] == '\t' || s[i] == ' ') && k != i)
-	{
+	while ((s[i] == ' ' || s[i] == '\t' || s[i] == '\n') && (i != j))
 		i++;
-		k--;
-	}
-	if (!(fresh = ft_strnew(k)))
-		return (NULL);
-	nl = fresh;
-	while (k-- && s[i])
-	{
-		*fresh = s[i++];
-		fresh++;
-	}
-	return (nl);
+	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && (i != j))
+		j--;
+	if (i == j)
+		return (ft_strnew(0));
+	new = ft_strsub(s, i, j - i + 1);
+	return (new);
 }
